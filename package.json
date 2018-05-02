@@ -1,13 +1,13 @@
 {
   "name": "react-redux-router-firebase",
   "version": "1.0.0",
-  "description": "Boilerplate for React & Redux, integrated with Firebase authentication",
+  "description": "A Smart Bullet Journal",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/Cretezy/react-redux-router-firebase.git"
+    "url": "git://github.com/JARLcodes/mahazay.git"
   },
-  "author": "Charles Crete",
+  "author": "JARL codes",
   "license": "MIT",
   "dependencies": {
     "firebase": "^3.5.3",
