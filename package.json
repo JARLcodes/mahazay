@@ -10,9 +10,11 @@
   "author": "JARL codes",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "firebase": "^3.5.3",
     "material-design-icons": "^3.0.1",
-    "material-ui": "^0.20.0",
+    "material-ui": "^1.0.0-beta.44",
+    "mdbreact": "^4.3.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",

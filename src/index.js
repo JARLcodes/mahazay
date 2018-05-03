@@ -4,8 +4,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { requireAuth } from './utils/secure';
 import * as reducers from './reducers'
 import App from './components/App'
@@ -15,8 +14,6 @@ import Register from './components/auth/Register'
 import Logout from './components/auth/Logout'
 import Dashboard from './components/secure/Dashboard'
 import Profile from './components/secure/Profile'
-import Navbar from './components/Navbar.jsx'
-import { lightBaseTheme } from 'material-ui/styles';
 
 
 const reducer = combineReducers({
@@ -35,19 +32,20 @@ const store = createStore(
 const history = syncHistoryWithStore(browserHistory, store);
 
 const secure = requireAuth(store);
+const theme = createMuiTheme();
 
 ReactDOM.render(
 	<Provider store={store}>
-		<MuiThemeProvider muiTheme={lightBaseTheme}>
+		<MuiThemeProvider theme={theme}>
 			<Router history={history}>
-					<Route path='/' component={App}>
-						<IndexRoute component={Navbar}/>
-						{/*<Route path='login' component={Login}/>
-						<Route path='register' component={Register}/>
-						<Route path='logout' component={Logout}/>
-						<Route path='dashboard' component={Dashboard} onEnter={secure}/>
-		<Route path='profile' component={Profile} onEnter={secure}/>*/}
-					</Route>
+				<Route path='/' component={App}>
+					<IndexRoute component={Home}/>
+					<Route path='login' component={Login}/>
+					<Route path='register' component={Register}/>
+					<Route path='logout' component={Logout}/>
+					<Route path='dashboard' component={Dashboard} onEnter={secure}/>
+					<Route path='profile' component={Profile} onEnter={secure}/>
+				</Route>
 			</Router>
 		</MuiThemeProvider>
 	</Provider>,
