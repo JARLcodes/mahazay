@@ -1,4 +1,4 @@
-config = {
+var config = {
 	apiKey: "AIzaSyCTEp2GTWkl3r3P3-gCuz45sN89ycD7Duo",
 	authDomain: "mahazay-c248c.firebaseapp.com",
 	databaseURL: "https://mahazay-c248c.firebaseio.com",
