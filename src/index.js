@@ -7,15 +7,15 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
 
 import { requireAuth } from './utils/secure';
-import * as reducers from './reducers'
-import App from './components/App'
-import Home from './components/Home'
-import SingleEntry from './components/SingleEntry.jsx'
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
-import Logout from './components/auth/Logout'
-import Dashboard from './components/secure/Dashboard'
-import Profile from './components/secure/Profile'
+import * as reducers from './reducers';
+import App from './components/App';
+import Home from './components/Home';
+import SingleEntry from './components/SingleEntry.jsx';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Logout from './components/auth/Logout';
+import Dashboard from './components/secure/Dashboard';
+import Profile from './components/secure/Profile';
 
 const reducer = combineReducers({
 	...reducers,
