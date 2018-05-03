@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
+
 import { requireAuth } from './utils/secure';
 import * as reducers from './reducers'
 import App from './components/App'
 import Home from './components/Home'
+import SingleEntry from './components/SingleEntry.jsx'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Logout from './components/auth/Logout'
@@ -32,17 +35,20 @@ const history = syncHistoryWithStore(browserHistory, store);
 const secure = requireAuth(store);
 
 ReactDOM.render(
-	<Provider store={store}>
-		<Router history={history}>
-			<Route path='/' component={App}>
-				<IndexRoute component={Home}/>
-				<Route path='login' component={Login}/>
-				<Route path='register' component={Register}/>
-				<Route path='logout' component={Logout}/>
-				<Route path='dashboard' component={Dashboard} onEnter={secure}/>
-				<Route path='profile' component={Profile} onEnter={secure}/>
-			</Route>
-		</Router>
-	</Provider>,
+	<MuiThemeProvider>
+		<Provider store={store}>
+			<Router history={history}>
+				<Route path='/' component={App}>
+					<IndexRoute component={Home}/>
+					<Route path='login' component={Login}/>
+					<Route path='register' component={Register}/>
+					<Route path='logout' component={Logout}/>
+					<Route path='dashboard' component={Dashboard} onEnter={secure}/>
+					<Route path='profile' component={Profile} onEnter={secure}/>
+					<Route path='entries/:id' component={SingleEntry}/>
+				</Route>
+			</Router>
+		</Provider>
+	</MuiThemeProvider>,
 	document.getElementById('root')
 );
