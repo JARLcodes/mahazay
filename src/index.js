@@ -16,6 +16,7 @@ import Register from './components/auth/Register';
 import Logout from './components/auth/Logout';
 import Dashboard from './components/secure/Dashboard';
 import Profile from './components/secure/Profile';
+import AllEntries from './components/AllEntries.jsx';
 
 const reducer = combineReducers({
 	...reducers,
@@ -43,9 +44,10 @@ ReactDOM.render(
 					<Route path='login' component={Login}/>
 					<Route path='register' component={Register}/>
 					<Route path='logout' component={Logout}/>
-					<Route path='dashboard' component={Dashboard} onEnter={secure}/>
+					<Route path='dashboard' component={Dashboard}/>
 					<Route path='profile' component={Profile} onEnter={secure}/>
 					<Route path='entries/:id' component={SingleEntry}/>
+					<Route path='entries' component={AllEntries} />
 				</Route>
 			</Router>
 		</Provider>

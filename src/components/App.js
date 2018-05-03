@@ -49,7 +49,7 @@ class App extends React.Component {
 			<div style={ this.styles.app }>
 				{ this.state.loaded ? this.props.children : null}
 			</div>
-		)
+		);
 	}
 }
 

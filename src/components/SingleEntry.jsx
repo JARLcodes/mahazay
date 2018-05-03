@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 
 const style = {
@@ -15,6 +15,6 @@ export default class SingleEntry extends Component {
       <div>
         <Paper style={style} zDepth={1} />
       </div>
-    )
+    );
   }
 }
