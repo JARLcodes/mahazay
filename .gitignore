@@ -15,4 +15,7 @@ build
 .env
 npm-debug.log
 
+#firebase config file
+firebase.config.js
+
 yarn.lock
