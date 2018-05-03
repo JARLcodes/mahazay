@@ -1,20 +1,48 @@
-import React, { Component } from 'react'
-import Paper from 'material-ui/Paper';
+import React from "react";
+import {Editor, EditorState, RichUtils} from "draft-js";
+import Button from 'material-ui/Button';
 
-const style = {
-  height: 100,
-  width: 100,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block',
+
+const styleMap = {
+  'STRIKETHROUGH': {
+    textDecoration: 'line-through',
+  },
+  'UNDERLINE': {
+    textDecoration: 'underline'
+  }
 };
 
-export default class SingleEntry extends Component {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {editorState: EditorState.createEmpty()};
+    this.onChange = (editorState) => this.setState({editorState});
+  }
+
+  onStyleClick(style) {
+    this.onChange(RichUtils.toggleInlineStyle(
+      this.state.editorState,
+      style
+    ));
+  }
+
   render() {
+    
     return (
       <div>
-        <Paper style={style} zDepth={1} />
+        <Button onClick={this.onStyleClick.bind(this, 'BOLD')}>Bold</Button>
+        <Button onClick={this.onStyleClick.bind(this, 'ITALIC')}>Italic</Button>
+        <Button onClick={this.onStyleClick.bind(this, 'UNDERLINE')}>Underline</Button>
+        <Button onClick={this.onStyleClick.bind(this, 'STRIKETHROUGH')}>Strikethrough</Button>
+        <div>
+          <Editor
+            customStyleMap={styleMap}
+            editorState={this.state.editorState}
+            onChange={this.onChange}
+            placeholder="...start here"
+          />
+        </div>
       </div>
-    )
+    );
   }
 }
