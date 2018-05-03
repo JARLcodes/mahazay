@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
 import { requireAuth } from './utils/secure';
 import * as reducers from './reducers';
@@ -16,6 +16,7 @@ import Register from './components/auth/Register';
 import Logout from './components/auth/Logout';
 import Dashboard from './components/secure/Dashboard';
 import Profile from './components/secure/Profile';
+
 
 const reducer = combineReducers({
 	...reducers,
@@ -33,10 +34,11 @@ const store = createStore(
 const history = syncHistoryWithStore(browserHistory, store);
 
 const secure = requireAuth(store);
+const theme = createMuiTheme();
 
 ReactDOM.render(
-	<MuiThemeProvider>
-		<Provider store={store}>
+	<Provider store={store}>
+		<MuiThemeProvider theme={theme}>
 			<Router history={history}>
 				<Route path='/' component={App}>
 					<IndexRoute component={Home}/>
@@ -45,10 +47,9 @@ ReactDOM.render(
 					<Route path='logout' component={Logout}/>
 					<Route path='dashboard' component={Dashboard} onEnter={secure}/>
 					<Route path='profile' component={Profile} onEnter={secure}/>
-					<Route path='entries/:id' component={SingleEntry}/>
 				</Route>
 			</Router>
-		</Provider>
-	</MuiThemeProvider>,
+		</MuiThemeProvider>
+	</Provider>,
 	document.getElementById('root')
 );
