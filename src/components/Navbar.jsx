@@ -18,13 +18,11 @@ const styles = {
  * This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
  * through the `onClick` property, and a [FlatButton](/#/components/flat-button) on the right.
  */
-const AppBarExampleIconButton = () => (
+const Navbar = () => (
   <AppBar
     title={<span style={styles.title}>Title</span>}
     onTitleClick={handleClick}
-    iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-    iconElementRight={<FlatButton label="Login" />}
   />
 );
 
-export default AppBarExampleIconButton;
+export default Navbar;
